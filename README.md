@@ -10,6 +10,7 @@ Widgets
 - [ ] Weather
 - [ ] Greetings (in some languages)
 - [ ] News
+- [ ] Game Deals
 - [ ] Now playing (plex/yt/spotify)
 - [ ] Server usage, cpu, ram, services up, etc...
 - [ ] To do List

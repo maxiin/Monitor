@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:monitor/widgets/game_deals_sw.dart';
 import 'package:reorderable_grid/reorderable_grid.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:monitor/widgets/empty_sw.dart';
@@ -86,6 +87,7 @@ class WindowState extends State<Window> {
                     items: const [
                       DropdownMenuItem(value: 'time', child: Text('Time'),),
                       DropdownMenuItem(value: 'spacing', child: Text('Spacing'),),
+                      DropdownMenuItem(value: 'deals', child: Text('Game Deals'),),
                     ], 
                     onChanged: (String? val) {
                       localState(() {
@@ -98,6 +100,9 @@ class WindowState extends State<Window> {
                             break;
                           case 'time':
                             items[item] = TimeSW();
+                            break;
+                          case 'deals':
+                            items[item] = GameDealsSW();
                             break;
                           default:
                             print(val);
@@ -177,11 +182,6 @@ class WindowState extends State<Window> {
 
   Widget _buidView() {
     final mediaQuery = MediaQuery.of(context);
-    final width = mediaQuery.size.width/crossAxisCount;
-    final height = mediaQuery.size.height/mainAxisCount;
-    SizedBox(height: height, child: Center(child: Text('Spacing')));
-    SizedBox(height: height, child: Center(child: Text('Empty')));
-    Text('15:02');
 
     return SizedBox(
       height: mediaQuery.size.height,
@@ -198,11 +198,8 @@ class WindowState extends State<Window> {
     for (var i = 0; i < crossAxisCount; i++) {
       itemIndexes.add([]);
     }
-    print(items.length);
-    print(items.length/crossAxisCount);
     for (var i = 0; i < (items.length/crossAxisCount); i++) {
       for (var j = 0; j < crossAxisCount; j++) {
-        print(i+j);
         itemIndexes[j].add(items[(crossAxisCount*i)+j].widget);
       }
     }

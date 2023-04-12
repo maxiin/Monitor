@@ -7,7 +7,8 @@ import 'package:monitor/widgets/screen_widget.dart';
 class Clock extends StatefulWidget {
   final bool is24H;
   final double fontSize;
-  const Clock({required this.is24H, required this.fontSize, super.key});
+  final MainAxisAlignment alignment;
+  const Clock({required this.is24H, required this.fontSize, required this.alignment, super.key});
 
   @override
   State<StatefulWidget> createState() => ClockState();
@@ -40,7 +41,7 @@ class ClockState extends State<Clock> {
       padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: widget.alignment,
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(DateFormat.EEEE().format(_now), style: TextStyle(fontSize: widget.fontSize),),
@@ -56,11 +57,12 @@ class ClockState extends State<Clock> {
 class TimeSW extends ScreenWidget {
   bool is24H;
   double fontSize;
+  MainAxisAlignment alignment;
 
-  TimeSW({this.is24H = false, this.fontSize = 60.0});
+  TimeSW({this.is24H = false, this.fontSize = 60.0, this.alignment = MainAxisAlignment.end});
 
   get widget {
-    return Clock(is24H: is24H, fontSize: fontSize,);
+    return Clock(is24H: is24H, fontSize: fontSize, alignment: alignment,);
   }
   
   @override
