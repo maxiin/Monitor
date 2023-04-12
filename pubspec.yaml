@@ -1,0 +1,36 @@
+name: monitor
+description: A new Flutter project.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.19.4 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  #flutter
+  cupertino_icons: ^1.0.2
+  shared_preferences: ^2.1.0
+  intl: ^0.18.0
+  #desktop utils
+  window_manager: ^0.3.2
+  #Widgets
+  reorderable_grid: ^1.0.6
+  flutter_speed_dial: ^6.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  fonts:
+    - family: NewMedia
+      fonts:
+        - asset: fonts/NewMedia-Regular.ttf
+        - asset: fonts/NewMedia-Bold.ttf
+          weight: 700
+  uses-material-design: true
